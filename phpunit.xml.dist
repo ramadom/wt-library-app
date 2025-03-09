@@ -1,0 +1,15 @@
+<phpunit
+    backupGlobals="false"
+    backupStaticAttributes="false"
+    colors="true"
+    verbose="true"
+>
+    <php>
+        <env name="KERNEL_CLASS" value="WT\Library\Kernel"/>
+        <env name="APP_ENV" value="test"/>
+        <env name="APP_DEBUG" value="1"/>
+        <env name="DATABASE_URL" value="mysql://root:root@127.0.0.1:3306/wt_library_test?charset=utf8mb4"/>
+        
+    </php>
+</phpunit>
+
