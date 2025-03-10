@@ -1,0 +1,35 @@
+security:
+    providers:
+        in_memory:
+            memory:
+                users:
+                    username:
+                        password: 'password'
+                        roles: ['ROLE_USER']
+                    user:
+                        password: 'pass'
+                        roles: ['ROLE_USER']
+
+    firewalls:
+        public:
+            pattern: ^/$  # Home page
+            security: false
+        main:
+            pattern: ^/   # Other pages
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                enable_csrf: false
+            logout:
+                path: app_logout
+                target: home  # Redirect to home after logout
+            security: true
+
+    password_hashers:
+        Symfony\Component\Security\Core\User\InMemoryUser:
+            algorithm: plaintext  # TODO
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_USER }
+        - { path: ^/$, roles: [IS_AUTHENTICATED_ANONYMOUSLY, ROLE_USER] }
+        # - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }

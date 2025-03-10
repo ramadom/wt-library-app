@@ -1,0 +1,111 @@
+body {
+    margin: 0;  /* Remove any default margin around the body */
+    padding: 0;  /* Remove any default padding */
+    font-family: Arial, sans-serif;  /* Optional: Set a default font */
+}
+
+header {
+    padding: 10px 0;  /* Optional: Add some padding to the header */
+    background-color: #f0f0f0;  /* Optional: Background color for the header */
+}
+
+footer {
+    padding: 10px 0;  /* Add some padding to the footer */
+    background-color: #f0f0f0;  /* Optional: Background color for the footer */
+    text-align: center;  /* Center the footer text */
+}
+
+.content {
+    padding: 20px;  /* Add space inside the content section */
+    margin-top: 20px;  /* Add space from the top (below the header) */
+    margin-bottom: 20px;  /* Add space from the bottom (above the footer) */
+}
+
+nav ul {
+    list-style-type: none;  /* Remove default bullet points */
+    padding: 0;  /* Remove default padding */
+    margin: 0;  /* Remove default margin */
+    display: flex;  /* Make the list items display in a row */
+}
+
+nav ul li {
+    margin-right: 20px;  /* Add some space between the list items */
+}
+
+nav ul li a {
+    text-decoration: none;  /* Remove underline from links */
+    color: #333;  /* Set link color */
+    padding: 10px 15px;  /* Add padding to make the links more clickable */
+    display: inline-block;  /* Ensure that the link takes up the space */
+}
+
+nav ul li a:hover {
+    background-color: #f0f0f0;  /* Add a hover effect */
+    border-radius: 5px;  /* Optional: rounded corners */
+}
+
+form {
+    display: flex;
+    flex-direction: column;  /* Ensures elements are stacked vertically */
+    width: 300px;  /* Optional: Set a fixed width for the form */
+}
+
+form label {
+    margin-bottom: 5px;  /* Add some space below the labels */
+    font-weight: bold;  /* Optional: Make labels bold */
+}
+
+form input {
+    margin-bottom: 10px;  /* Add space between input fields */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+form button:hover {
+    background-color: #0056b3;  /* Change color on hover */
+}
+
+#book-list {
+    margin: 20px;  /* Add margin around the book list */
+}
+
+#bookTable {
+    width: 100%;  /* Ensure the table takes up full width */
+    border-collapse: collapse;  /* Collapse table borders into a single line */
+    margin-top: 20px;  /* Space between the book list and the table */
+}
+
+#bookTable th, #bookTable td {
+    border: 1px solid #ddd;  /* Add a light border for the table cells */
+    padding: 12px;  /* Add padding inside table cells */
+    text-align: left;  /* Align text to the left in the cells */
+}
+
+#bookTable th {
+    background-color: #f4f4f4;  /* Light background color for the header */
+    font-weight: bold;  /* Make header text bold */
+}
+
+#bookTable tr:nth-child(even) {
+    background-color: #f9f9f9;  /* Light grey background for even rows */
+}
+
+#bookTable tr:hover {
+    background-color: #e2e2e2;  /* Darker background color when hovering over rows */
+}
+
+#bookTable td[colspan="3"] {
+    text-align: center;  /* Center-align the "No books in library" message */
+    font-style: italic;  /* Optional: Make the "No books in library" message italic */
+    color: #999;  /* Grey color for the message */
+}

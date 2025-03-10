@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class BookControllerTest extends WebTestCase
 {
-    private const API_URL = 'http://localhost:7778/book';
+    private const API_URL = 'http://localhost:7778/api/book';
 
     private $client;
 

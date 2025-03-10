@@ -12,7 +12,7 @@ use WT\Library\Service\BookService;
 use WT\Library\Entity\BookEntity;
 use WT\Library\Lib\RequestException;
 
-#[Route('/book')]
+#[Route('/api/book')]
 class BookController extends AbstractController {
 
   public function __construct(

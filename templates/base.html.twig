@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Wise Library{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{{ path('home') }}">Home</a></li>
+          <li><a href="{{ path('admin') }}">Admin</a></li>
+            {% if app.user %}
+              <li><a href="{{ path('app_logout') }}">Logout</a></li>
+            {% else %}
+              <li><a href="{{ path('app_login') }}">Login</a></li>
+            {% endif %}
+        </ul>
+      </nav>
+    </header>
+
+    <div class="content">
+      {% block body %}{% endblock %}
+    </div>
+
+    <footer>
+      <p>Wise Library 2025</p>
+    </footer>
+  </body>
+</html>
