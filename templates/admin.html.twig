@@ -2,8 +2,92 @@
 
 {% block body %}
 
-    <div id="book-list">
-        <h2>Library admin SPA page</h2>
+  <script type="text/javascript" src="https://unpkg.com/vue@3.2.21/dist/vue.global.prod.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue-toast-notification@2"></script>
+  <link href="https://cdn.jsdelivr.net/npm/vue-toast-notification@2/dist/theme-sugar.css" rel="stylesheet">
+
+  <div id="app" class="container-fluid">
+
+    <div class="row mt-3">
+      <div class="col"><input v-model="searchText" v-on:input="openAction" class="form-control" placeholder="Search">
+      </div>
     </div>
+
+    <div class="row mt-3 d-flex align-items-end">
+      <input id="input" type="hidden" v-model="id">
+      <div class="col"><label>Title<input v-model="title" class="form-control"></label></div>
+      <div class="col">
+        <label>Genre
+          <select v-model="genre" class="form-control custom-select">
+            <option v-for="genre in bookGenres" :value="genre.id" v-text="genre.name"></option>
+          </select>
+        </label>
+      </div>
+      <div class="col"><label>Author<input v-model="author" class="form-control"></label></div>
+      <div class="col"><label>Publicated<input v-model="publicationDate" class="form-control"></label></div>
+      <div class="col"><label>ISBN<input v-model="ISBN" class="form-control"></label></div>
+      <div class="col"><label>Copies<input v-model="copies" class="form-control"></label></div>
+
+      <div class="col-auto d-flex align-items-end">
+        <button v-on:click="saveAction" class="btn btn-primary btn-sm mb-2">Save</button>
+      </div>
+      <div class="col-auto d-flex align-items-end">
+        <button v-on:click="newAction" class="btn btn-primary btn-sm mb-2">New</button>
+      </div>
+    </div>
+
+    <book-table class="table text-left">
+    </book-table>
+
+  </div>
+
+<script type="text/x-template" id="book-table-template">
+  <table class="table text-left">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Author</th>
+        <th>Publicated</th>
+        <th>ISBN</th>
+        <th>Copies</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="book in $parent.books" :key="book.id">
+        <td v-text="book.title"></td>
+        <td v-text="book.genre"></td>
+        <td v-text="book.author"></td>
+        <td v-text="book.publicationDate"></td>
+        <td v-text="book.ISBN"></td>
+        <td v-text="book.copies"></td>
+        <td><button class="btn btn-primary btn-sm" v-on:click="$parent.editAction(book)">Edit</button></td>
+        <td><button class="btn btn-primary btn-sm" v-on:click="$parent.deleteAction(book)">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+</script>
+
+  <script type="text/javascript" src="{{ asset('js/api.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/App.js') }}"></script>
+
+  <script>
+    const app = Vue.createApp(App);
+    app.use(VueToast);
+
+    app.component('book-table', {
+      template: '#book-table-template'
+    });
+
+    app.mount("#app");
+  </script>
 
 {% endblock %}

@@ -8,7 +8,10 @@
                 <tr>
                     <th>Title</th>
                     <th>Genre</th>
+                    <th>Author</th>
+                    <th>Publicated</th>
                     <th>ISBN</th>
+                    <th>copies</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,7 +19,10 @@
             <tr>
                 <td>{{ book.title }}</td>
                 <td>{{ book.genre }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.publicationDate|date('Y-m-d') }}</td>
                 <td>{{ book.ISBN }}</td>
+                <td>{{ book.copies }}</td>
             </tr>
         {% else %}
             <tr>

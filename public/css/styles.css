@@ -1,111 +1,172 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* Ensures padding and border are included in width/height calculations */
+}
+
+/* Body and General Layout */
 body {
-    margin: 0;  /* Remove any default margin around the body */
-    padding: 0;  /* Remove any default padding */
-    font-family: Arial, sans-serif;  /* Optional: Set a default font */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Header Styling - Same padding for consistency */
 header {
-    padding: 10px 0;  /* Optional: Add some padding to the header */
-    background-color: #f0f0f0;  /* Optional: Background color for the header */
-}
-
-footer {
-    padding: 10px 0;  /* Add some padding to the footer */
-    background-color: #f0f0f0;  /* Optional: Background color for the footer */
-    text-align: center;  /* Center the footer text */
-}
-
-.content {
-    padding: 20px;  /* Add space inside the content section */
-    margin-top: 20px;  /* Add space from the top (below the header) */
-    margin-bottom: 20px;  /* Add space from the bottom (above the footer) */
+    background-color: #f0f0f0;
+    padding: 10px 0;  /* Consistent padding across both pages */
+    box-sizing: border-box;  /* Ensure padding does not affect height */
+    height: 60px;  /* Set a fixed height for header */
+    display: flex;
+    align-items: center;  /* Center the navigation vertically */
 }
 
 nav ul {
-    list-style-type: none;  /* Remove default bullet points */
-    padding: 0;  /* Remove default padding */
-    margin: 0;  /* Remove default margin */
-    display: flex;  /* Make the list items display in a row */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
 }
 
 nav ul li {
-    margin-right: 20px;  /* Add some space between the list items */
+    margin-right: 20px;
 }
 
 nav ul li a {
-    text-decoration: none;  /* Remove underline from links */
-    color: #333;  /* Set link color */
-    padding: 10px 15px;  /* Add padding to make the links more clickable */
-    display: inline-block;  /* Ensure that the link takes up the space */
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    display: inline-block;
 }
 
 nav ul li a:hover {
-    background-color: #f0f0f0;  /* Add a hover effect */
-    border-radius: 5px;  /* Optional: rounded corners */
+    background-color: #e2e2e2;
+    border-radius: 5px;
 }
 
+/* Main Content Area */
+.content {
+    flex: 1;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Form Elements */
 form {
     display: flex;
-    flex-direction: column;  /* Ensures elements are stacked vertically */
-    width: 300px;  /* Optional: Set a fixed width for the form */
+    flex-direction: column;
+    width: 300px;
 }
 
 form label {
-    margin-bottom: 5px;  /* Add some space below the labels */
-    font-weight: bold;  /* Optional: Make labels bold */
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-form input {
-    margin-bottom: 10px;  /* Add space between input fields */
+form input,
+form select,
+form button {
+    margin-bottom: 10px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
 form button {
-    padding: 10px;
-    border: none;
     background-color: #007bff;
     color: white;
     cursor: pointer;
-    border-radius: 4px;
 }
 
 form button:hover {
-    background-color: #0056b3;  /* Change color on hover */
+    background-color: #0056b3;
 }
 
+/* Table Styling */
 #book-list {
-    margin: 20px;  /* Add margin around the book list */
+    margin: 20px;
 }
 
 #bookTable {
-    width: 100%;  /* Ensure the table takes up full width */
-    border-collapse: collapse;  /* Collapse table borders into a single line */
-    margin-top: 20px;  /* Space between the book list and the table */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-#bookTable th, #bookTable td {
-    border: 1px solid #ddd;  /* Add a light border for the table cells */
-    padding: 12px;  /* Add padding inside table cells */
-    text-align: left;  /* Align text to the left in the cells */
+#bookTable th,
+#bookTable td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
 }
 
 #bookTable th {
-    background-color: #f4f4f4;  /* Light background color for the header */
-    font-weight: bold;  /* Make header text bold */
+    background-color: #f4f4f4;
+    font-weight: bold;
 }
 
 #bookTable tr:nth-child(even) {
-    background-color: #f9f9f9;  /* Light grey background for even rows */
+    background-color: #f9f9f9;
 }
 
 #bookTable tr:hover {
-    background-color: #e2e2e2;  /* Darker background color when hovering over rows */
+    background-color: #e2e2e2;
 }
 
 #bookTable td[colspan="3"] {
-    text-align: center;  /* Center-align the "No books in library" message */
-    font-style: italic;  /* Optional: Make the "No books in library" message italic */
-    color: #999;  /* Grey color for the message */
+    text-align: center;
+    font-style: italic;
+    color: #999;
+}
+
+/* Footer Styling - Same padding and height for consistency */
+footer {
+    background-color: #f0f0f0;
+    padding: 10px 0;  /* Same padding for footer */
+    box-sizing: border-box;  /* Ensure padding does not affect height */
+    height: 60px;  /* Set a fixed height for footer */
+    text-align: center;
+    margin-top: auto;
+}
+
+/* Ensure containers are consistent */
+.container,
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col {
+    flex: 1;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Ensure proper alignment of buttons */
+button {
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
