@@ -20,10 +20,21 @@ class BookController extends AbstractController {
     private LoggerInterface $log) {
   }
 
-  #[Route('/hi')]
-  public function hi(Request $request) {
+  #[Route('/genre')]
+  public function getBookGenres(Request $request): JsonResponse {
 
-    return new Response("Hello");
+    $res = null;
+    $status = JsonResponse::HTTP_OK;
+    try {
+      $genres = $this->bs->findBookGenres();
+      $res = new LibraryResponse($genres);
+
+    } catch (\Exception $ex) {
+      $this->log->error("ERROR: $ex");
+      $res = new LibraryResponse(null, "Error getting book genres: " . $ex->getMessage());
+      $status = JsonResponse::HTTP_INTERNAL_SERVER_ERROR;
+    }
+    return new JsonResponse($res, $status);
   }
 
   #[Route('/', methods: ['GET'])]
@@ -150,6 +161,18 @@ class BookController extends AbstractController {
       }
     } else {
       throw new RequestException("Field 'title' not found");
+    }
+    // Validate author field
+    if (isset($data['author'])) {
+      $pAuthor = $data['author'];
+      if (!empty($pAuthor)) {
+        //TODO validate author length
+        $book->author = $pAuthor;
+      } else {
+        throw new RequestException("Field 'author' not valid");
+      }
+    } else {
+      throw new RequestException("Field 'author' not found");
     }
     // Validate ISBN field
     if (isset($data['ISBN'])) {

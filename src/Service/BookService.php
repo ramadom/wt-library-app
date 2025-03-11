@@ -16,6 +16,18 @@ class BookService {
     private LoggerInterface $log) {
   }
 
+  public function findBookGenres(): array { //TODO add Genre entity to manage book genres
+
+    $genres = [
+      ['id' => "adventure", 'name' => "Adventure"],
+      ['id' => "computers", 'name' => "Computer science"],
+      ['id' => "classic", 'name' => "Classic"],
+      ['id' => "scifi", 'name' => "Science fiction"]
+    ];
+
+    return $genres;
+  }
+
   public function findBooks(): array {
 
     $books = null;

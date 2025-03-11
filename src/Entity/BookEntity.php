@@ -17,7 +17,10 @@ class BookEntity implements \JsonSerializable {
   #[ORM\Column(type: "string", length: 200)]
   public $title;
 
-  #[ORM\Column(type: "string", name: "isbn", length: 13)]  //TODO add unique constraint
+  #[ORM\Column(type: "string", length: 200)]
+  public $author;
+
+  #[ORM\Column(type: "string", name: "isbn", length: 13, unique: true)]
   public $ISBN;
 
   #[ORM\Column(type: "date")]
@@ -31,6 +34,7 @@ class BookEntity implements \JsonSerializable {
 
   public function update(BookEntity $source) {
     $this->title = $source->title;
+    $this->author = $source->author;
     $this->ISBN = $source->ISBN;
     $this->publicationDate = $source->publicationDate;
     $this->genre = $source->genre;
@@ -42,6 +46,7 @@ class BookEntity implements \JsonSerializable {
     $json = [];
     $json['id'] = $this->id;
     $json['title'] = $this->title;
+    $json['author'] = $this->author;
     $json['ISBN'] = $this->ISBN;
     $json['publicationDate'] = $this->publicationDate ? $this->publicationDate->format('Y-m-d') : '';
     $json['genre'] = $this->genre;
@@ -52,6 +57,7 @@ class BookEntity implements \JsonSerializable {
   public function __toString(): string {
     return "BookEntity[id=" . $this->id
       . ", title=" . $this->title
+      . ", author=" . $this->author
       . ", ISBN=" . $this->ISBN
       . ", genre=" . $this->genre
       . ", copies=" . $this->copies
