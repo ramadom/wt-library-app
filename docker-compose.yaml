@@ -1,0 +1,39 @@
+services:
+
+  db:
+    image: mysql:8.0 
+    container_name: wt-library-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wt_library
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - wt-library-net
+
+
+  wt-library-app:
+    image: php:8.1-fpm
+    container_name: wt-library-app
+    working_dir: /var/www/wt-library-app
+    volumes:
+      - .:/var/www/wt-library-app
+      - ./docker-entrypoint.sh:/usr/local/bin/docker-entrypoint.sh
+    networks:
+      - wt-library-net
+    environment:
+      - DATABASE_URL=mysql://root:root@db:3306/wt_library
+    depends_on:
+      - db
+    ports:
+      - "7789:7789"
+    entrypoint: ["docker-entrypoint.sh"]
+
+
+networks:
+  wt-library-net:
+    driver: bridge
+
+volumes:
+  db_data:
+
